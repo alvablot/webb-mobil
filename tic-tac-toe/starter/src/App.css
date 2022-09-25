@@ -1,0 +1,55 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.App {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.status {
+  font-size: 36px;
+  text-align: center;
+  margin: 10px;
+  display: block;
+  padding: 20px;
+}
+.history {
+  background: #638aff;
+  border: 2px solid #333;
+  font-size: 15px;
+  margin-bottom: 10px;
+  padding: 10px;
+  letter-spacing:2px;
+}
+.reset {
+  margin-top: 30px;
+}
+
+.board {
+  width: 192px;
+  display: flex;
+  flex-wrap: wrap;
+  margin: auto;
+  margin-bottom: 0px;
+}
+
+.square {
+  background: #f3f3f3;
+  border: 2px solid #333;
+  color: #333;
+  border-radius: 0;
+  height: 64px;
+  width: 64px;
+  text-align: center;
+  font-size: 36px;
+  padding: 0;
+}
+
+.square:focus {
+  outline: none;
+}

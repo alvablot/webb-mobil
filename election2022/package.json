@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "require": "^2.4.20"
+  },
+  "name": "election2022",
+  "version": "1.0.0",
+  "main": "example.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
