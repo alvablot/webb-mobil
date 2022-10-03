@@ -1,5 +1,4 @@
 import "./App.css";
-
 import { useState } from "react";
 function Square(props) {
   return (
@@ -21,6 +20,7 @@ function Board() {
   let [mark, setMark] = useState("X");
   let [theHistory, setTheHistory] = useState([]);
   let [theWinner, setTheWinner] = useState(`Next up: ${mark}`);
+  
   const handleClick = (e, i) => {
     if (e.target.value !== "") return;
     if (mark === "O") setMark("X");
@@ -28,7 +28,6 @@ function Board() {
     markArray[i] = mark;
     setMarks(markArray);
     checkWinner(i, mark);
-    
   };
 
   function checkWinner(i, m) {
@@ -159,8 +158,6 @@ function Board() {
       }
     }
     if (winner) setTheWinner(`${mark} is the winner 🏆 🥳`);
-    
-
   }
 
   return (
