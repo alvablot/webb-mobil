@@ -1,9 +1,11 @@
-import { useState, useEffect, useContext } from "react";
-import { UserContext } from "../context/UserContext.js";
+import { useState, useEffect, useContext, useReducer } from "react";
+import { UserContext } from "../context/UserContext";
+import { reducer } from "../reducers/red";
 import axios from "axios";
 let token;
 
 function Login() {
+    const [state, dispatch] = useReducer(reducer, { tkn: "" });
     const user = useContext(UserContext);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -16,16 +18,13 @@ function Login() {
                 password: password,
             });
             token = response.data.token;
-            user.email = email
-            user.password = password
-            user.token = token
-            localStorage.setItem("email", email);
-            localStorage.setItem("password", password);
             localStorage.setItem("token", token);
-            console.log(user);
+            state.tkn = token;
+            dispatch({ type: "incremented_tkn" });
         } catch (error) {
             setErrorMsg(`${error.response.data.status}: ${error.response.data.message}`);
-            console.log(error.response.data);
+            console.log(error.response);
+            throw error;
         }
     }
     return (
@@ -47,8 +46,9 @@ function Login() {
                     value={password}
                 />
                 <br />
-                <button>Tryck</button>
+                <button>Login</button>
             </form>
+            <p>TOKEN: {state.tkn}.</p>
         </>
     );
 }
