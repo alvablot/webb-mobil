@@ -1,5 +1,7 @@
+
 import { useState, useEffect, useContext } from "react";
 import { useAuthContext } from "../context/AuthContext";
+
 import axios from "axios";
 
 function Login() {
@@ -21,7 +23,8 @@ function Login() {
 
         } catch (error) {
             setErrorMsg(`${error.response.data.status}: ${error.response.data.message}`);
-            console.log(error.response.data);
+            console.log(error.response);
+            throw error;
         }
     }
     return (
@@ -43,8 +46,9 @@ function Login() {
                     value={password}
                 />
                 <br />
-                <button>Tryck</button>
+                <button>Login</button>
             </form>
+            <p>TOKEN: {state.tkn}.</p>
         </>
     );
 }

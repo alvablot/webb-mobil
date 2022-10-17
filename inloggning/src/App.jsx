@@ -2,9 +2,6 @@ import { useState, useEffect, useContext } from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import Login from "./components/Login";
 import { useAuthContext } from "./context/AuthContext";
-
-let token;
-import axios from "axios";
 import "./App.css";
 
 function App() {
@@ -20,5 +17,7 @@ function App() {
         </div>
     );
 }
+
+
 
 export default App;

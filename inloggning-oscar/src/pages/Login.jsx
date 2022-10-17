@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useUserContext } from "../contexts/UserContext";
 
 function Login() {
-    const { user, getUser } = useUserContext();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
