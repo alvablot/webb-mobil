@@ -1,13 +1,14 @@
 import { useState, useEffect, useContext } from "react";
-import { UserContext } from "../context/UserContext.js";
+import { useAuthContext } from "../context/AuthContext";
 import axios from "axios";
-let token;
 
 function Login() {
-    const user = useContext(UserContext);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     let [errorMsg, setErrorMsg] = useState("");
+
+    const providerValue = useAuthContext();
+
     async function login(e) {
         e.preventDefault();
         try {
@@ -15,14 +16,9 @@ function Login() {
                 email: email,
                 password: password,
             });
-            token = response.data.token;
-            user.email = email
-            user.password = password
-            user.token = token
-            localStorage.setItem("email", email);
-            localStorage.setItem("password", password);
-            localStorage.setItem("token", token);
-            console.log(user);
+            providerValue.updateToken(response.data.token);
+            localStorage.setItem("token", response.data.token);
+
         } catch (error) {
             setErrorMsg(`${error.response.data.status}: ${error.response.data.message}`);
             console.log(error.response.data);

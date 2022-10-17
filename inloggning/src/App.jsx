@@ -1,16 +1,18 @@
 import { useState, useEffect, useContext } from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import Login from "./components/Login";
-import { UserContext } from "./context/UserContext.js";
+import { useAuthContext } from "./context/AuthContext";
+
 let token;
 import axios from "axios";
 import "./App.css";
 
 function App() {
-    const user = useContext(UserContext);
+    const providerValue = useAuthContext();
     return (
         <div className="App">
-            <h1>{user.email}</h1>
+            <h1>Login</h1>
+            <p>{providerValue.token}</p>
             <Routes>
                 <Route path="*" element={<Login />} />
                 <Route path="/login" element={<Login />} />
